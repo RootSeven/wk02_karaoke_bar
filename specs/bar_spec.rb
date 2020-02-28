@@ -7,7 +7,8 @@ require_relative('../models/bar.rb')
 class BarTest < MiniTest::Test
 
   def setup()
-    @bar1 = Bar.new("Bar Bell")
+    @karaoke_room1 = KaraokeRoom.new(@bar1, "Room 1", 5, 10, [])
+    @bar1 = Bar.new("Bar Bell", [@karaoke_room1])
   end
 
   def test_get_name()

@@ -7,6 +7,7 @@ class Guest
     @age = age
     @wallet = wallet
     @favourite_song = favourite_song
+    @booked_room = "No room booked"
   end
 
 end
