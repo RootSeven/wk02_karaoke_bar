@@ -3,6 +3,7 @@ require('minitest/reporters')
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../models/bar.rb')
+require_relative('../models/karaoke_room.rb')
 
 class BarTest < MiniTest::Test
 

@@ -16,7 +16,18 @@ class KaraokeRoom
   end
 
   def add_guest(guest)
-    @guests_in_room.push(guest)
+    if enough_room() && guest.wallet >= @entry_fee
+      @guests_in_room.push(guest)
+      guest.wallet -= @entry_fee
+      self.bar.till += @entry_fee
+      guest.enter(self)
+    end
+
+    if not enough_room()
+      return "There is no more space in this room."
+    else
+      return "You do not have enough money to book this room"
+    end
   end
 
   def enough_room()
