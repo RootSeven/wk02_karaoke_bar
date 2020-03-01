@@ -30,6 +30,15 @@ class KaraokeRoom
     end
   end
 
+  def remove_guest(guest)
+    if self.guests_in_room.include?(guest)
+      self.guests_in_room.delete(guest)
+      guest.exit()
+    else
+      return "#{guest.name} is not in this room."
+    end
+  end
+
   def enough_room()
     if @guests_in_room.length < @capacity
       return true

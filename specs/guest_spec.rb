@@ -21,25 +21,25 @@ class GuestTest < MiniTest::Test
 
 # Getter Tests
 
-  # def test_get_name()
-  #   assert_equal("Oleander", @guest1.name)
-  # end
-  #
-  # def test_get_age()
-  #   assert_equal(25, @guest1.age)
-  # end
-  #
-  # def test_get_wallet()
-  #   assert_equal(100, @guest1.wallet)
-  # end
-  #
-  # def test_get_favourite_song()
-  #   assert_equal("Careless Whisper", @guest1.favourite_song.name)
-  # end
-  #
-  # def test_get_current_room()
-  #   assert_equal("Oleander is not in any karaoke room.", @guest1.current_room)
-  # end
+  def test_get_name()
+    assert_equal("Oleander", @guest1.name)
+  end
+
+  def test_get_age()
+    assert_equal(25, @guest1.age)
+  end
+
+  def test_get_wallet()
+    assert_equal(100, @guest1.wallet)
+  end
+
+  def test_get_favourite_song()
+    assert_equal("Careless Whisper", @guest1.favourite_song.name)
+  end
+
+  def test_get_current_room()
+    assert_equal("Oleander is not in any karaoke room.", @guest1.current_room)
+  end
 
 # Get Information Tests
 
@@ -57,25 +57,11 @@ class GuestTest < MiniTest::Test
 
 # Action Tests
 
-  def test_enter_room__favourite_song_happy()
-    @karaoke_room1.add_song(@song1)
-    @guest1.enter(@karaoke_room1)
-    assert_equal(@karaoke_room1, @guest1.current_room)
-    assert_equal("Happy", @guest1.current_mood)
-  end
-
-  def test_enter_room__not_favourite_song_neutral()
-    @guest1.enter(@karaoke_room1)
-    assert_equal(@karaoke_room1, @guest1.current_room)
-    assert_equal("Neutral", @guest1.current_mood)
-  end
-
   def test_exit()
     @guest1.enter(@karaoke_room1)
     @guest1.exit()
 
     assert_equal("Oleander is not in any karaoke room.", @guest1.current_room)
-    assert_equal("Neutral", @guest1.current_mood)
   end
 
   def test_sing()
@@ -91,7 +77,6 @@ class GuestTest < MiniTest::Test
     @karaoke_room1.add_song(@song1)
     @guest1.enter(@karaoke_room1)
     assert_equal([@song1], @karaoke_room1.song_list)
-    assert_equal("Happy", @guest1.current_mood)
     assert_equal("My favourite song is playing! Time for my 390 seconds in the limelight.", @guest1.sing())
 
   end

@@ -9,7 +9,6 @@ class Guest
     @wallet = wallet
     @favourite_song = favourite_song
     @current_room = "#{self.name} is not in any karaoke room."
-    @current_mood = "Neutral"
   end
 
 # Get Information
@@ -30,19 +29,15 @@ class Guest
 
   def enter(room)
     @current_room = room
-    if room.song_list.include?(@favourite_song)
-      @current_mood = "Happy"
-    end
   end
 
   def exit()
     @current_room = "#{self.name} is not in any karaoke room."
-    @current_mood = "Neutral"
   end
 
   def sing()
     if @current_room.class == KaraokeRoom
-      if @current_mood == "Happy"
+      if @current_room.song_list.include?(@favourite_song)
         return "My favourite song is playing! Time for my #{@favourite_song.length_seconds} seconds in the limelight."
       else
         return "I don't really like the songs here."
